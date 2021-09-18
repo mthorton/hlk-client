@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router
+} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 
-function App() {
+import Auth from './components/pages/Auth';
+import Home from './components/pages/Home';
+
+type LocalStorageState = {
+  localStorage: string
+}
+
+const App: React.FunctionComponent<LocalStorageState> = () => {
+//function App() {
+  const [sessionToken, setSessionToken] = useState('');
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('token')){
+  //     setSessionToken(localStorage.getItem('token'));
+  //   }
+  // }, [])
+
+  const updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken);
+    setSessionToken(newToken);
+    console.log(sessionToken);
+    }
+
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken}/>
+    : <Auth updateToken={updateToken}/>) //updateToken={updateToken}
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+    
+        <Router>
+          {protectedViews()}
+        </Router>
+        
+      </div>
     </div>
   );
 }
