@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; //useEffect
 import './App.css';
 import {
   BrowserRouter as Router
@@ -8,11 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Auth from './components/pages/Auth';
 import Home from './components/pages/Home';
 
-type LocalStorageState = {
-  localStorage: string
-}
-
-const App: React.FunctionComponent<LocalStorageState> = () => {
+const App: React.FunctionComponent = () => {
 //function App() {
   const [sessionToken, setSessionToken] = useState('');
 

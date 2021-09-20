@@ -1,11 +1,15 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
-import Login from './Login';
+import { Col, Container, Row } from 'reactstrap'; //Button, Form, FormGroup, Label, Input
+//import Login from './Login';
 import SignUp from './SignUp';
 
 type AcceptedProps = {
-    updateToken: object;
+    updateToken(arg: string): void;
 }
+
+// interface AcceptedProps {
+//     updateToken(arg: string): void;
+// }
 
 type SessionTokenState = {
     sessionToken: string
@@ -22,10 +26,10 @@ class IndexAuth extends React.Component<AcceptedProps, SessionTokenState>{
                 <Container>
                     <Row>
                         <Col md="6">
-                            {/* <SignUp updateToken={props.updateToken} /> */}
+                            <SignUp updateToken={this.props.updateToken} />
                         </Col>
                         <Col md="6" className="login-col">
-                            {/* <Login updateToken={props.updateToken}/> */}
+                            {/* <Login updateToken={this.props.updateToken}/> */}
                         </Col>
                     </Row>
                 </Container>

@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import React from 'react'; //{ Component }
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap'; //Col, Container, Row
 
 type AcceptedProps = {
-    tokenProp: string;
+    updateToken(arg: string): void;
 }
+
+// interface AcceptedProps {
+//     updateToken(arg: string): void;
+// }
 
 type UserState = {
     username: string,
@@ -18,13 +22,18 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
-          username: "",
-          password: ""
+          username: "username@email.com",
+          password: "password",
         }
+        this.setUsername = this.setUsername.bind(this);
+        this.setPassword = this.setPassword.bind(this);
       }
 
-    handleSubmit() {
-        //event.preventDefault();
+    handleSubmit = (event: { preventDefault: () => void; }) => {
+        // console.log("enter handle submit")
+        // console.log(this.state.username)
+        // console.log(this.state.password)
+        event.preventDefault();
         fetch('http://localhost:3000/user/register', {
             method: 'POST', 
             body: JSON.stringify({user:{username: this.state.username, password: this.state.password}}),
@@ -34,7 +43,7 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
         }).then(
             (response) => response.json()
         ).then((data) => {
-            //this.props.updateToken(data.sessionToken)
+            this.props.updateToken(data.sessionToken)
         })
     }
 
@@ -42,12 +51,14 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
         this.setState({
             username: i.target.value 
         });
+        //console.log(this.state.username) //testing
     }
 
     setPassword = (i: { target: { value: any; }; }) => {
         this.setState({
             password: i.target.value 
         });
+        //console.log(this.state.password) //testing
     }
 
     render(){
@@ -57,11 +68,11 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="username">Username</Label>
-                    <Input onChange={this.setUsername}/>
+                    <Input type="text" value={this.state.username} onChange={this.setUsername}/>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
-                    <Input onChange={this.setPassword}/>
+                    <Input type="text" value={this.state.password} onChange={this.setPassword}/>
                 </FormGroup>
                 <Button type="submit">Sign Up</Button>
             </Form>

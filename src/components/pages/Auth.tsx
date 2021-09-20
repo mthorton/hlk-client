@@ -1,11 +1,15 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+//import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import IndexAuth from '../auth/IndexAuth';
 
 
 type AcceptedProps = {
-    updateToken: object;
+    updateToken(arg: string): void;
 }
+
+// interface AcceptedProps {
+//     updateToken(arg: string): void;
+// }
 
 type SessionTokenState = {
     sessionToken: string
@@ -18,13 +22,6 @@ class Auth extends React.Component<AcceptedProps, SessionTokenState>{
           sessionToken: ""
         }
       }
-
-    // updateToken = (newToken: string) => {
-    // localStorage.setItem('token', newToken);
-    // this.setState({ sessionToken: newToken})
-    // //setSessionToken(newToken);
-    // console.log(this.state.sessionToken);
-    // }
 
     render(){
         return(
