@@ -1,7 +1,10 @@
 import React from 'react';
 //import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import {Redirect, Route, Switch} from 'react-router-dom';
+import Feed from './Feed';
+import Landing from './Landing';
 import NavBar from './NavBar';
+import Profile from './Profile';
 
 
 type AcceptedProps = {
@@ -41,10 +44,10 @@ class Home extends React.Component<AcceptedProps>{
                 <NavBar clickLogout={this.clearToken}/>
             
                 <Switch>
-                    {/* <Route exact path='/' component={() => (<Redirect to='/eventfeed' />)} />
-                    <Route exact path='/eventfeed'><EventFeed /></Route>
-                    <Route exact path='/createevent'><EventIndex token={this.props.token} /></Route>
-                    <Route exact path='/profile'><Profile /></Route> */}
+                    <Route exact path='/' component={() => (<Redirect to='/landing' />)} />
+                    <Route exact path='/landing'><Landing /></Route>
+                    <Route exact path='/feed'><Feed token={this.props.token} /></Route>
+                    <Route exact path='/profile'><Profile /></Route>
                 </Switch>
             </div>
         )

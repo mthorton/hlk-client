@@ -52,9 +52,9 @@ class NavBar extends React.Component<AcceptedProps, SetValues>{
                     <Nav className="ml" navbar>
                         <NavItem className='nav-links'>
                             <ul >
-                                <li><Link to='/eventfeed'>event feed</Link></li>
-                                <li><Link to='/createevent'>create event</Link></li>
-                                <li><Link to='/profile'>profile</Link></li>
+                                <li><Link to='/landing'>Home</Link></li>
+                                <li><Link to='/feed'>Feed</Link></li>
+                                <li><Link to='/profile'>Profile</Link></li>
                             </ul>
                         </NavItem>
                 <NavbarBrand className='nav-title' href="/"><h1>Hook, Line, and Keeper</h1></NavbarBrand>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'reactstrap'; //Button, Form, FormGroup, Label, Input
-//import Login from './Login';
+import Login from './Login';
 import SignUp from './SignUp';
 
 type AcceptedProps = {
@@ -29,7 +29,7 @@ class IndexAuth extends React.Component<AcceptedProps, SessionTokenState>{
                             <SignUp updateToken={this.props.updateToken} />
                         </Col>
                         <Col md="6" className="login-col">
-                            {/* <Login updateToken={this.props.updateToken}/> */}
+                            <Login updateToken={this.props.updateToken}/>
                         </Col>
                     </Row>
                 </Container>
