@@ -47,7 +47,7 @@ class Home extends React.Component<AcceptedProps>{
                     <Route exact path='/' component={() => (<Redirect to='/landing' />)} />
                     <Route exact path='/landing'><Landing /></Route>
                     <Route exact path='/feed'><Feed token={this.props.token} /></Route>
-                    <Route exact path='/profile'><Profile /></Route>
+                    <Route exact path='/profile'><Profile token={this.props.token} /></Route>
                 </Switch>
             </div>
         )

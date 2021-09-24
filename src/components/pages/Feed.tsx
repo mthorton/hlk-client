@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
 
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
 import PostPrimaryEdit from '../post-primary/PostPrimaryEdit';
@@ -11,13 +12,14 @@ type AcceptedProps = {
 type VariableTypes = {
     events: Array<any>, //Array<string>
     updateActive: boolean,
-    eventToUpdate: object
-
-interface eventToUpdate {
-    [key: string]: any
+    eventToUpdate: any,
 }
 
-class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
+interface eventToUpdate {
+    value: any
+}
+
+class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{ //eventToUpdate
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
@@ -28,7 +30,7 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
     }
 
     fetchEvents = () => {
-        fetch('http://localhost:3000/log/all', {
+        fetch('http://localhost:3000/postprimary/all', {
         method: "GET",
         headers: new Headers({
             'Content-Type': "application/json",
@@ -61,20 +63,26 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
     }
 
     componentDidMount(){
-        this.fetchEvents
+        this.fetchEvents()
     }
+
+    // testing(){
+    //     console.log(this.state.eventToUpdate)
+    //     console.log(this.state.events)
+    // }
+
+    // onClick: any = () => 
 
     render(){
         return(
             <Container className='event-feed'>
-                
+                {/* <Button onClick={this.onClick}>Feed</Button> */}
+                 <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
                  <Row>
                      <Col md='12'>
-                        <PostPrimaryDisplay events={this.state.events} editUpdateEvent={this.editUpdateEvent} 
-                        updateOn={this.updateOn} fetchEvents={this.fetchEvents} token={this.props.token}/>
+                        <PostPrimaryDisplay events={this.state.events} editUpdateEvent={this.editUpdateEvent}
+                        updateOn={this.updateOn} fetchEvents={this.fetchEvents} token={this.props.token} eventToUpdate={this.state.eventToUpdate} updateOff={this.updateOff}/>
                     </Col>
-                    {this.state.updateActive ? <PostPrimaryEdit eventToUpdate={this.state.eventToUpdate}
-                    updateOff={this.updateOff} token={this.props.token} fetchEvents={this.fetchEvents}/> : <></>}
                 </Row>
             </Container>
         )
