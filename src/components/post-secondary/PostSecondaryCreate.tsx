@@ -3,7 +3,8 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 
 type AcceptedProps = {
     token: string,
-    fetchEvents(): any
+    fetchSecondaryEvents: (event: any) => void
+    event: any
 }
 
 type SetValues = {
@@ -11,10 +12,12 @@ type SetValues = {
     genre: string,
     post: string,
     thoughts: string,
-    modal: boolean
+    modal: boolean,
+    secondaryEvents: Array<any>,
+    postprimaryId: number
 }
 
-class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
+class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
@@ -22,41 +25,30 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
             genre: "",
             post: "",
             thoughts: "",
-            modal: false
+            modal: false,
+            secondaryEvents: [],
+            postprimaryId: this.props.event.id
         }
     }
-    // const [date, setDate] = useState('');
-    // const [title, setTitle] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [description, setDescription] = useState('');
-
-    // useEffect(() => {
-    //     handleSubmit();
-    // }, []);
 
     handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/postprimary/create`, {  
+        fetch(`http://localhost:3000/postsecondary/create`, {  
             method: 'POST',
-            body: JSON.stringify({postprimary: {date: this.state.date, genre: this.state.genre, post: this.state.post, thoughts: this.state.thoughts}}),
+            body: JSON.stringify({postsecondary: {date: this.state.date, post: this.state.post, thoughts: this.state.thoughts, postprimaryId: this.state.postprimaryId}}),
             headers: new Headers({
                 'Content-Type' : 'application/json',
                 'Authorization' : `Bearer ${this.props.token}`
             })
         }).then((res) => res.json())
         .then((logData) => {
-            console.log(logData);
             this.setState({
                 date: '',
                 genre: '',
                 post: '',
                 thoughts: '',
             })
-            // setDate('');
-            // setTitle('');
-            // setLocation('');
-            // setDescription('');
-            this.props.fetchEvents();
+            this.props.fetchSecondaryEvents(this.state.postprimaryId);
         })
     };
 
@@ -78,7 +70,7 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
         return(
             <>
 
-                <Button onClick={this.toggleOpen}>Create Post</Button>
+                <Button onClick={this.toggleOpen}>Create Secondary Post</Button>
                 <Modal isOpen={this.state.modal}>
 
                     <ModalHeader>Edit Post</ModalHeader>
@@ -87,10 +79,6 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
                             <FormGroup>
                                 <Label htmlFor="dateString">Date: </Label>
                                 <Input name="dateString" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="title">Genre: </Label>
-                                <Input name="title" value={this.state.genre} onChange={(e) => this.setState({ genre: e.target.value})}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="location">Post: </Label>
@@ -110,4 +98,4 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
     
 };
 
-export default PostPrimaryCreate;
+export default PostSecondaryCreate;

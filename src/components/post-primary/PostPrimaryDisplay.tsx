@@ -2,6 +2,8 @@ import React from 'react';
 import { Table} from 'reactstrap'; 
 //import APIURL from '../helpers/environment';
 import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import PostSecondaryCreate from '../post-secondary/PostSecondaryCreate';
+import PostSecondaryDisplay from '../post-secondary/PostSecondaryDisplay';
 import PostPrimaryEdit from './PostPrimaryEdit';
 
 
@@ -15,13 +17,59 @@ type AcceptedProps = {
     updateOff():any,
 };
 
-class EventFeedTable extends React.Component<AcceptedProps>{
+type SetVariables = {
+    eventsSecondary: Array<any>,
+    eventSecondaryToUpdate: any,
+    updateActiveSecondary: boolean
+}
+
+class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
-    
+            eventsSecondary: [],
+            eventSecondaryToUpdate: {},
+            updateActiveSecondary: false
         }
     }
+
+    fetchSecondaryEvents = (event: any) => {
+        fetch(`http://localhost:3000/postsecondary/all/${event}`, {
+        method: "GET",
+        headers: new Headers({
+            'Content-Type': "application/json",
+            'Authorization': `Bearer ${this.props.token}`,
+        })
+    }).then((res) => res.json())
+    .then((logData) => {
+        this.setState({
+            eventsSecondary: logData
+    });
+    console.log(this.state.eventsSecondary)
+    })}  
+
+    editUpdateSecondaryEvent = (event: Array<string>) => {
+        this.setState({
+            eventSecondaryToUpdate: event
+        })
+        //console.log(event)
+    }
+
+    updateOnSecondary = () => {
+        this.setState({
+            updateActiveSecondary: true
+        })
+    }
+
+    updateOffSecondary = () => {
+        this.setState({
+            updateActiveSecondary: false
+        })
+    }
+
+    // componentDidMount(){
+    //     this.fetchSecondaryEvents()
+    // }
 
     deleteEvent = (event: { id: any; }) => {
         console.log('delete endpoint')
@@ -38,34 +86,37 @@ class EventFeedTable extends React.Component<AcceptedProps>{
     eventMapper = () => {
         return this.props.events.map((event, index) => {
             return(
-                <tr key={index}>
-                    <th scope="row">{event.id}</th>
-                    <td>{event.date}</td>
-                    <td>{event.genre}</td>
-                    <td>{event.post}</td>
-                    <td>{event.thoughts}</td>
-                    <th>
-                        <PostPrimaryEdit eventToUpdate={event}
-                        updateOff={this.props.updateOff} token={this.props.token} fetchEvents={this.props.fetchEvents}/>
-                        <Button onClick={() => {this.deleteEvent(event)}}>Delete</Button>
-                    </th>
-                </tr>
+                <>
+                    <tr key={index}>
+                        <th scope="row">{event.id}</th>
+                        <td>{event.date}</td>
+                        <td>{event.genre}</td>
+                        <td>{event.post}</td>
+                        <td>{event.thoughts}</td>
+                        <th>
+                            <PostPrimaryEdit eventToUpdate={event}
+                                updateOff={this.props.updateOff} token={this.props.token} fetchEvents={this.props.fetchEvents} />
+                            <Button onClick={() => { this.deleteEvent(event); } }>Delete</Button>
+                            <PostSecondaryCreate token={this.props.token} event={event} fetchSecondaryEvents={this.fetchSecondaryEvents}/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <PostSecondaryDisplay token={this.props.token} eventsSecondary={this.state.eventsSecondary} editUpdateSecondaryEvent={this.editUpdateSecondaryEvent} updateOnSecondary={this.updateOnSecondary} eventSecondaryToUpdate={event} updateOffSecondary={this.updateOffSecondary} event={event}/>                     
+                        </th>
+                    </tr>
+                    
+                </>
             )
         })
     }
 
-    // testing(){
-    //     console.log(this.props.events)
-    //     console.log(this.props.eventToUpdate)
-    // }
-
-    // onClick: any = () => this.testing()
+    
 
     render(){
         return(
             <>
-            {/* <Button onClick={this.onClick}>post primary display</Button>
-            {console.log(this.props.eventToUpdate + 'post primary display')} */}
+            {console.log(this.state.eventSecondaryToUpdate)}           
             <h3 className='feed-header'>Posts</h3>
             <hr/>
             <Table>
