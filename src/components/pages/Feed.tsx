@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import SynonymFetch from '../dictionary-api/SynonymFetch';
 import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
 
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
@@ -77,6 +78,7 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
         return(
             <Container className='event-feed'>
                 {/* <Button onClick={this.onClick}>Feed</Button> */}
+                <SynonymFetch word={"dog"}/>
                  <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
                  <Row>
                      <Col md='12'>

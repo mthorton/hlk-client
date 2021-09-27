@@ -1,0 +1,16 @@
+.navbar{
+    margin-left: 5em;
+}
+
+.nav-links ul{
+    margin-left: 3em;
+}
+
+ul#nav-horizontal li{
+    display: inline;
+    padding-left: 2em;
+}
+
+.nav-button {
+    margin-left: 8em;
+}

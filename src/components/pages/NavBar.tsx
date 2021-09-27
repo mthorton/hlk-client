@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import './NavBar.css';
+import './NavBar.css';
 import {
     Navbar,
     NavbarBrand,
@@ -46,24 +46,16 @@ class NavBar extends React.Component<AcceptedProps, SetValues>{
     render(){
         return(
             <Navbar color="faded" light expand="md" className='navbar'>
-                {/* <NavbarBrand href="/">Meet Me Under the Moon</NavbarBrand> */}
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml" navbar>
+                    <NavbarBrand className='nav-title'><h1>Hook, Line, and Keeper</h1></NavbarBrand>
                         <NavItem className='nav-links'>
-                            <ul >
+                            <ul id="nav-horizontal">
                                 <li><Link to='/landing'>Home</Link></li>
                                 <li><Link to='/feed'>Feed</Link></li>
                                 <li><Link to='/profile'>Profile</Link></li>
                             </ul>
-                        </NavItem>
-                <NavbarBrand className='nav-title' href="/"><h1>Hook, Line, and Keeper</h1></NavbarBrand>
-                        <NavItem>
-                            {/* <Switch>
-                             <Route exact path='/eventindex'><EventIndex /></Route>
-                             <Route exact path='/createevent'><CreateEvent /></Route>
-                             <Route exact path='/profile'><Profile /></Route>
-                         </Switch> */}
                         </NavItem>
                         <NavItem>
                             <Button className='nav-button' onClick={this.onClick} href='/'>Logout</Button>
