@@ -1,0 +1,43 @@
+/*---------------Auth Switch Button----------------------------*/
+.auth-button{
+    margin-left: 25%;
+    padding-left: 0;
+}
+
+ul#auth-horizontal li{
+    display: inline;
+    border: black 1px solid;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+/*---------------Auth Form----------------------------*/
+
+.auth-form{
+    margin-left: 25%;
+}
+
+.auth-form-button{
+    margin-top: 5%;
+}
+
+.auth-input{
+    margin-top: 5%;
+}
+
+.auth-title{
+    padding-top: 5%;
+    padding-bottom: 10%;
+    font-size: 72px;
+}
+
+/*---------------Auth Container----------------------------*/
+
+.auth-container{
+    border: 1px black solid;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 60%;
+}

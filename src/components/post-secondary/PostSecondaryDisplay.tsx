@@ -61,7 +61,7 @@ class PostSecondaryDisplay extends React.Component<AcceptedProps, SetVariables>{
 
     eventMapper = () => {        
         // console.log(this.props.eventSecondaryToUpdate)
-        return this.state.secondaryEvents.map((event, index) => {
+        return this.props.eventsSecondary.map((event, index) => {
             if(event.postprimaryId = this.props.event.id){
                 return(
                     <>

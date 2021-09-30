@@ -52,20 +52,17 @@ class Login extends React.Component<AcceptedProps, userState>{
 
     render(){
         return (
-   
-            <div>
-                <h1>Login</h1>
-                <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
+                <Form onSubmit={this.handleSubmit} className="auth-form" style={{width: "50%"}}>
+                    <h1>Login</h1>
+                    <FormGroup className="auth-input">
                         <Label htmlFor="username">Username</Label>
                         <Input type="text" value={this.state.username} onChange={this.setUsername}/>                    </FormGroup>
                     <FormGroup>
                         <Label htmlFor="password">Password</Label>
                         <Input type="text" value={this.state.password} onChange={this.setPassword}/>
                     </FormGroup>
-                    <Button type="submit">Login</Button>
+                    <Button className="auth-form-button" type="submit">Login</Button>
                 </Form>
-            </div>
         )
     }
     

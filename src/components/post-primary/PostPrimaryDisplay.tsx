@@ -34,6 +34,7 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     }
 
     fetchSecondaryEvents = (event: any) => {
+        console.info("fetch ?")
         fetch(`http://localhost:3000/postsecondary/all/${event}`, {
         method: "GET",
         headers: new Headers({
@@ -42,10 +43,11 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         })
     }).then((res) => res.json())
     .then((logData) => {
+        console.log(logData)
         this.setState({
             eventsSecondary: logData
     });
-    console.log(this.state.eventsSecondary)
+    console.info(this.state.eventsSecondary)
     })}  
 
     editUpdateSecondaryEvent = (event: Array<string>) => {
@@ -67,10 +69,6 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         })
     }
 
-    // componentDidMount(){
-    //     this.fetchSecondaryEvents()
-    // }
-
     deleteEvent = (event: { id: any; }) => {
         console.log('delete endpoint')
         fetch(`http://localhost:3000/postprimary/delete/${event.id}`, {  
@@ -84,6 +82,7 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     }
 
     eventMapper = () => {
+        console.info('mappping')
         return this.props.events.map((event, index) => {
             return(
                 <>
@@ -116,7 +115,7 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     render(){
         return(
             <>
-            {console.log(this.state.eventSecondaryToUpdate)}           
+            {console.info(this.state.eventSecondaryToUpdate)}           
             <h3 className='feed-header'>Posts</h3>
             <hr/>
             <Table>
