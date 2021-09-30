@@ -1,4 +1,8 @@
 
+.navbar-home{
+    margin-left: 15%;
+}
+
 .nav-links ul{
     margin-left: 3em;
 }
@@ -6,8 +10,11 @@
 ul#nav-horizontal li{
     display: inline;
     padding-left: 2em;
+    padding-right: 2em;
+
 }
 
 .nav-button {
     margin-left: 8em;
+    margin-right: 8em;
 }

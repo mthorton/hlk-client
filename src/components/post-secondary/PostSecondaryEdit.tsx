@@ -4,9 +4,9 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 type AcceptedProps = {
     token: string,
     // updateActive: boolean,
-    eventSecondaryToUpdate: any,
     updateOffSecondary():any, //(arg: string): void
-    fetchSecondaryEvents(): any, //(arg: string): void
+    fetchEvents(): any, //(arg: string): void
+    event: any,
 }
 
 type SetValues = {
@@ -21,9 +21,9 @@ class PostSecondaryEdit extends React.Component<AcceptedProps, SetValues>{
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
-            editDate: this.props.eventSecondaryToUpdate.date,
-            editPost: this.props.eventSecondaryToUpdate.post,
-            editThoughts: this.props.eventSecondaryToUpdate.thoughts,
+            editDate: this.props.event.date,
+            editPost: this.props.event.post,
+            editThoughts: this.props.event.thoughts,
             modal: false
         }
     }
@@ -32,7 +32,7 @@ class PostSecondaryEdit extends React.Component<AcceptedProps, SetValues>{
     eventUpdate = (event: { preventDefault: () => void; }) => {  // Look into this more // changed 2nd event to index. (event, index)
         // console.log(this.props.eventSecondaryToUpdate.id + " edit page")
         event.preventDefault();
-        fetch(`http://localhost:3000/postsecondary/update/${this.props.eventSecondaryToUpdate.id}`, {
+        fetch(`http://localhost:3000/postsecondary/update/${this.props.event.id}`, {
             method: 'PUT',
             body: JSON.stringify({postsecondary: {date: this.state.editDate, post: this.state.editPost, thoughts: this.state.editThoughts}}),
             headers: new Headers({
@@ -42,7 +42,7 @@ class PostSecondaryEdit extends React.Component<AcceptedProps, SetValues>{
             })
         }) 
         .then((res) => {
-            this.props.fetchSecondaryEvents();
+            this.props.fetchEvents();
             this.props.updateOffSecondary();
         }) 
         .catch(function(error) {

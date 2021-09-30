@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 
 type AcceptedProps = {
     token: string,
-    fetchSecondaryEvents: (event: any) => void
+    fetchEvents(): any, //(arg: string): void
     event: any
 }
 
@@ -48,7 +48,7 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
                 post: '',
                 thoughts: '',
             })
-            this.props.fetchSecondaryEvents(this.state.postprimaryId);
+            this.props.fetchEvents()
         })
     };
 

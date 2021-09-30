@@ -3,7 +3,8 @@ import { Table} from 'reactstrap';
 //import APIURL from '../helpers/environment';
 import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import PostSecondaryCreate from '../post-secondary/PostSecondaryCreate';
-import PostSecondaryDisplay from '../post-secondary/PostSecondaryDisplay';
+// import PostSecondaryDisplay from '../post-secondary/PostSecondaryDisplay';
+import PostSecondaryEdit from '../post-secondary/PostSecondaryEdit';
 import PostPrimaryEdit from './PostPrimaryEdit';
 
 
@@ -33,22 +34,22 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         }
     }
 
-    fetchSecondaryEvents = (event: any) => {
-        console.info("fetch ?")
-        fetch(`http://localhost:3000/postsecondary/all/${event}`, {
-        method: "GET",
-        headers: new Headers({
-            'Content-Type': "application/json",
-            'Authorization': `Bearer ${this.props.token}`,
-        })
-    }).then((res) => res.json())
-    .then((logData) => {
-        console.log(logData)
-        this.setState({
-            eventsSecondary: logData
-    });
-    console.info(this.state.eventsSecondary)
-    })}  
+    // fetchSecondaryEvents = (event: any) => {
+    //     console.info("fetch ?")
+    //     fetch(`http://localhost:3000/postsecondary/all/${event}`, {
+    //     method: "GET",
+    //     headers: new Headers({
+    //         'Content-Type': "application/json",
+    //         'Authorization': `Bearer ${this.props.token}`,
+    //     })
+    // }).then((res) => res.json())
+    // .then((logData) => {
+    //     console.log(logData)
+    //     this.setState({
+    //         eventsSecondary: logData
+    // });
+    // console.log(this.state.eventsSecondary)
+    // })}  
 
     editUpdateSecondaryEvent = (event: Array<string>) => {
         this.setState({
@@ -81,6 +82,18 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         .then(() => this.props.fetchEvents())
     }
 
+    deleteSecondaryEvent = (event: { id: any; }) => {
+        console.log('delete endpoint')
+        fetch(`http://localhost:3000/postsecondary/delete/${event.id}`, {  
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${this.props.token}`
+            })
+        })
+        .then(() => this.props.fetchEvents())
+    }
+
     eventMapper = () => {
         console.info('mappping')
         return this.props.events.map((event, index) => {
@@ -96,12 +109,30 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
                             <PostPrimaryEdit eventToUpdate={event}
                                 updateOff={this.props.updateOff} token={this.props.token} fetchEvents={this.props.fetchEvents} />
                             <Button onClick={() => { this.deleteEvent(event); } }>Delete</Button>
-                            <PostSecondaryCreate token={this.props.token} event={event} fetchSecondaryEvents={this.fetchSecondaryEvents}/>
+                            <PostSecondaryCreate token={this.props.token} event={event} fetchEvents={this.props.fetchEvents}/>
                         </th>
                     </tr>
                     <tr>
                         <th>
-                            <PostSecondaryDisplay token={this.props.token} eventsSecondary={this.state.eventsSecondary} editUpdateSecondaryEvent={this.editUpdateSecondaryEvent} updateOnSecondary={this.updateOnSecondary} eventSecondaryToUpdate={event} updateOffSecondary={this.updateOffSecondary} event={event}/>                     
+                            {/* <PostSecondaryDisplay token={this.props.token} eventsSecondary={this.state.eventsSecondary} editUpdateSecondaryEvent={this.editUpdateSecondaryEvent} updateOnSecondary={this.updateOnSecondary} eventSecondaryToUpdate={event} updateOffSecondary={this.updateOffSecondary} event={event}/>                      */}
+                            <td>{event.postsecondaries.map((secPost: any) => {
+                                return(
+                                    <>
+                                        <tr key={index}>
+                                            <th scope="row">{secPost.id}</th>
+                                            <td>{secPost.date}</td>
+                                            <td>{secPost.post}</td>
+                                            <td>{secPost.thoughts}</td>
+                                            <th>
+                                                <PostSecondaryEdit token={this.props.token} event={secPost} updateOffSecondary={this.updateOffSecondary} fetchEvents={this.props.fetchEvents} />
+
+                                                <Button onClick={() => { this.deleteSecondaryEvent(secPost); } }>Delete</Button>
+                                            </th>
+                                        </tr>
+
+                                    </>
+                                )
+                            })}</td>
                         </th>
                     </tr>
                     

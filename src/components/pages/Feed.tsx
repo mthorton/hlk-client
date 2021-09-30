@@ -42,6 +42,7 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
         this.setState({
             events: logData
     });
+    console.log(this.state.events)
     })}     
     
     editUpdateEvent = (event: Array<string>) => {

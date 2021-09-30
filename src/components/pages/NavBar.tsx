@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
+import { BsFillHouseFill, BsCollectionFill, BsFillPersonFill } from "react-icons/bs"
 import {
     Navbar,
     NavbarBrand,
@@ -45,16 +46,16 @@ class NavBar extends React.Component<AcceptedProps, SetValues>{
 
     render(){
         return(
-            <Navbar color="faded" light expand="md" className='navbar'>
+            <Navbar color="faded" light expand="md" className='navbar-home'>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml" navbar>
                     <NavbarBrand className='nav-title'><h1>Hook, Line, and Keeper</h1></NavbarBrand>
                         <NavItem className='nav-links'>
                             <ul id="nav-horizontal">
-                                <li><Link to='/landing'>Home</Link></li>
-                                <li><Link to='/feed'>Feed</Link></li>
-                                <li><Link to='/profile'>Profile</Link></li>
+                                <li><Link to='/landing'><BsFillHouseFill/></Link></li>
+                                <li><Link to='/feed'><BsCollectionFill/></Link></li>
+                                <li><Link to='/profile'><BsFillPersonFill/></Link></li>
                             </ul>
                         </NavItem>
                         <NavItem>
