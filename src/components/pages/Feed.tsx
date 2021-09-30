@@ -1,10 +1,8 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import SynonymFetch from '../dictionary-api/SynonymFetch';
 import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
-
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
-import PostPrimaryEdit from '../post-primary/PostPrimaryEdit';
 
 type AcceptedProps = {
     token: string,

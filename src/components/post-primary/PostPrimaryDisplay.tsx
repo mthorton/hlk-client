@@ -1,9 +1,7 @@
 import React from 'react';
 import { Table} from 'reactstrap'; 
-//import APIURL from '../helpers/environment';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import { Button } from 'reactstrap';
 import PostSecondaryCreate from '../post-secondary/PostSecondaryCreate';
-// import PostSecondaryDisplay from '../post-secondary/PostSecondaryDisplay';
 import PostSecondaryEdit from '../post-secondary/PostSecondaryEdit';
 import PostPrimaryEdit from './PostPrimaryEdit';
 
@@ -34,28 +32,10 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         }
     }
 
-    // fetchSecondaryEvents = (event: any) => {
-    //     console.info("fetch ?")
-    //     fetch(`http://localhost:3000/postsecondary/all/${event}`, {
-    //     method: "GET",
-    //     headers: new Headers({
-    //         'Content-Type': "application/json",
-    //         'Authorization': `Bearer ${this.props.token}`,
-    //     })
-    // }).then((res) => res.json())
-    // .then((logData) => {
-    //     console.log(logData)
-    //     this.setState({
-    //         eventsSecondary: logData
-    // });
-    // console.log(this.state.eventsSecondary)
-    // })}  
-
     editUpdateSecondaryEvent = (event: Array<string>) => {
         this.setState({
             eventSecondaryToUpdate: event
         })
-        //console.log(event)
     }
 
     updateOnSecondary = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 //import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
-import IndexAuth from '../auth/IndexAuth';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import AuthLogin from './AuthLogin';
 import AuthSignUp from './AuthSignUp';

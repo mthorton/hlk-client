@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 type AcceptedProps = {
     updateToken(arg: string): void;
