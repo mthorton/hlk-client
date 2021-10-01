@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     updateToken(arg: string): void;
@@ -23,7 +24,8 @@ class Login extends React.Component<AcceptedProps, userState>{
 
     handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        fetch('http://localhost:3000/user/login', {
+        //fetch('http://localhost:3000/user/login', {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST', 
             body: JSON.stringify({user:{username: this.state.username, password: this.state.password}}),
             headers: new Headers({

@@ -13,20 +13,6 @@ class Profile extends React.Component<AcceptedProps>{
         }
     }
 
-    fetchProfile = () => {
-        fetch('http://localhost:3000/postprimary/all', {
-        method: "GET",
-        headers: new Headers({
-            'Content-Type': "application/json",
-            'Authorization': `Bearer ${this.props.token}`,
-        })
-    }).then((res) => res.json())
-    .then((logData) => {
-        this.setState({
-            events: logData
-    });
-    })}     
-
     render(){
         return(
             <Container>

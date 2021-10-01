@@ -1,5 +1,6 @@
 import React from 'react'; //{ Component }
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'; //Col, Container, Row
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     updateToken(arg: string): void;
@@ -34,7 +35,8 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
         // console.log(this.state.username)
         // console.log(this.state.password)
         event.preventDefault();
-        fetch('http://localhost:3000/user/register', {
+        //fetch('http://localhost:3000/user/register', {
+        fetch(`${APIURL}/user/register`, {
             method: 'POST', 
             body: JSON.stringify({user:{username: this.state.username, password: this.state.password}}),
             headers: new Headers({

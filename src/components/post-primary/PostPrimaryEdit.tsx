@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     token: string,
@@ -33,7 +34,8 @@ class PostPrimaryEdit extends React.Component<AcceptedProps, SetValues>{
 
     eventUpdate = (event: { preventDefault: () => void; }) => {  // Look into this more // changed 2nd event to index. (event, index)
         event.preventDefault();
-        fetch(`http://localhost:3000/postprimary/update/${this.props.eventToUpdate.id}`, {
+        //fetch(`http://localhost:3000/postprimary/update/${this.props.eventToUpdate.id}`, {
+        fetch(`${APIURL}/postprimary/update/${this.props.eventToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({postprimary: {date: this.state.editDate, genre: this.state.editGenre, post: this.state.editPost, thoughts: this.state.editThoughts}}),
             headers: new Headers({

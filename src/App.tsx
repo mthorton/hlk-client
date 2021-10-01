@@ -22,7 +22,7 @@ const App: React.FunctionComponent = () => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
     console.log(sessionToken);
-    }
+  }
 
   const protectedViews = () => {
     return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken}/>

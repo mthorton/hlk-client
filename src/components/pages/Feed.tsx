@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 import SynonymFetch from '../dictionary-api/SynonymFetch';
 import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
@@ -29,7 +30,8 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
     }
 
     fetchEvents = () => {
-        fetch('http://localhost:3000/postprimary/all', {
+        //fetch('http://localhost:3000/postprimary/all', {
+        fetch(`${APIURL}/postprimary/all`, {
         method: "GET",
         headers: new Headers({
             'Content-Type': "application/json",

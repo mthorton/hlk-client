@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     token: string,
@@ -33,7 +34,8 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
 
     handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/postsecondary/create`, {  
+        //fetch(`http://localhost:3000/postsecondary/create`, {  
+        fetch(`${APIURL}/postsecondary/create`, {
             method: 'POST',
             body: JSON.stringify({postsecondary: {date: this.state.date, post: this.state.post, thoughts: this.state.thoughts, postprimaryId: this.state.postprimaryId}}),
             headers: new Headers({
