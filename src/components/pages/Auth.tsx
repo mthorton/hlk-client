@@ -1,12 +1,10 @@
 import React from 'react';
-//import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import AuthLogin from './AuthLogin';
 import AuthSignUp from './AuthSignUp';
 import AuthButton from './AuthButton';
 import { Container } from 'reactstrap';
-
-
+import './Auth.css';
 
 type AcceptedProps = {
     updateToken(arg: string): void;
@@ -31,16 +29,16 @@ class Auth extends React.Component<AcceptedProps, SessionTokenState>{
 
     render(){
         return(
-            <div>
+            <div className="auth-landing">
                 <h1 className="auth-title">Hook, Line, and Keeper</h1>
-                <Container className="auth-container">
-                    <AuthButton  />
-                    <Switch>
-                        <Route exact path='/' component={() => (<Redirect to='/login' />)} />
-                        <Route exact path='/login'><AuthLogin updateToken={this.props.updateToken} /></Route>
-                        <Route exact path='/signup'><AuthSignUp updateToken={this.props.updateToken} /></Route>
-                    </Switch>    
-                </Container>           
+                    <div className="auth-container">
+                            <AuthButton  />
+                            <Switch>
+                                <Route exact path='/' component={() => (<Redirect to='/login' />)} />
+                                <Route exact path='/login'><AuthLogin updateToken={this.props.updateToken} /></Route>
+                                <Route exact path='/signup'><AuthSignUp updateToken={this.props.updateToken} /></Route>
+                            </Switch>   
+                    </div>           
             </div>
         )
     }

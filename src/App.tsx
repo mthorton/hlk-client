@@ -9,14 +9,7 @@ import Auth from './components/pages/Auth';
 import Home from './components/pages/Home';
 
 const App: React.FunctionComponent = () => {
-//function App() {
   const [sessionToken, setSessionToken] = useState('');
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('token')){
-  //     setSessionToken(localStorage.getItem('token'));
-  //   }
-  // }, [])
 
   const updateToken = (newToken: string) => {
     localStorage.setItem('token', newToken);

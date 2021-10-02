@@ -1,26 +1,28 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 const DicURL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
 
 type AcceptedProps = {
-    word: string,
+
 }
 
 type SetVariables = {
     synonyms: Array<any>,
+    userInput: string,
 }
 
 class SynonymFetch extends React.Component<AcceptedProps, SetVariables>{ //eventToUpdate
     constructor(props: AcceptedProps){
         super(props)
         this.state = {
-            synonyms: []
+            synonyms: [],
+            userInput: "",
         }
     }    
 
     fetchEvents = () => {
-        fetch(`${DicURL}${this.props.word}`)
+        fetch(`${DicURL}${this.state.userInput}`)
         .then((res) => res.json())
         .then((logData) => {
             this.setState({
@@ -36,7 +38,17 @@ class SynonymFetch extends React.Component<AcceptedProps, SetVariables>{ //event
     render(){
         return(
             <div>
-                <Button onClick={this.fetchEvents}>Fetch Data</Button>
+                <h4>Thesaurus</h4>
+                <Label htmlFor="findSynonym">Word: </Label>
+                <Input name="findSynonym" onChange={(e) => this.setState({ userInput: e.target.value})}/>
+                <Button onClick={this.fetchEvents} className="synonym-button">Get Synonyms</Button>
+                <div className="synonym-display">{this.state.synonyms.map((s) => {
+                    return(
+                        <div>
+                            <p>{s}</p>
+                        </div>
+                    )
+                })}</div>
             </div>
         )
     }

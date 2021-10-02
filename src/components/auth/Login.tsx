@@ -54,8 +54,8 @@ class Login extends React.Component<AcceptedProps, userState>{
 
     render(){
         return (
-                <Form onSubmit={this.handleSubmit} className="auth-form" style={{width: "50%"}}>
-                    <h1>Login</h1>
+                <Form onSubmit={this.handleSubmit} className="auth-form" style={{width: "30%"}}>
+                    {/* <h1>Login</h1> */}
                     <FormGroup className="auth-input">
                         <Label htmlFor="username">Username</Label>
                         <Input type="text" value={this.state.username} onChange={this.setUsername}/>                    </FormGroup>

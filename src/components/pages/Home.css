@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+
+.main-container{
+    background-image: url('/src/assets/paper.jpg');
+    height: 100%;
+    padding-top: 10em;
+    padding-bottom: 10em;
+}
+
+.main-background{
+    background-image: url('/src/assets/handwriting.png');
+}
+
+.landing-top h1{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.landing-middle{
+    padding-top: 10em;
+}
+
+.footer{
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url('/src/assets/handwriting.png');
+    position: relative;
+    padding-bottom: 0.2em;
+    padding-top: 1em;
+    font-family: 'Cedarville Cursive', cursive;
+    color: white;
+}
+
+.feed-date-genre{
+    float: left;
+}
+
+hr{
+    border-top: 10px solid black;
+}
+
+.synonym-display{
+    height: 20em;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.synonym-button{
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.secondary-create-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}  
+
+.secondary-create-modal{
+    width: 90%;
+    max-width: none!important; 
+}
+
+.secondary-create-post{
+    height: 10em;
+}
+
+.secondary-create-thoughts{
+    height: 10em;
+}
+
+.secondary-create-button-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    text-align: center;
+}  

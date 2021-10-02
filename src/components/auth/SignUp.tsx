@@ -66,8 +66,8 @@ class SignUp extends React.Component<AcceptedProps, UserState, SetTypes>{
     render(){
         return(
             
-            <Form onSubmit={this.handleSubmit} className="auth-form" style={{width: "50%"}}>
-                <h1>Sign Up</h1>
+            <Form onSubmit={this.handleSubmit} className="auth-form" style={{width: "30%"}}>
+                {/* <h1>Sign Up</h1> */}
                 <FormGroup className="auth-input">
                     <Label htmlFor="username">Username</Label>
                     <Input type="text" value={this.state.username} onChange={this.setUsername}/>

@@ -1,11 +1,11 @@
 import React from 'react';
-//import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import Feed from './Feed';
 import Landing from './Landing';
 import NavBar from './NavBar';
 import Profile from './Profile';
-
+import Footer from './Footer';
+import './Home.css';
 
 type AcceptedProps = {
     token: string
@@ -27,12 +27,6 @@ class Home extends React.Component<AcceptedProps>{
         }
     }    
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('token')){
-    //       setSessionToken(localStorage.getItem('token'));
-    //     }
-    //   }, [])
-
     clearToken = () => {
         localStorage.clear();
         this.setState({ sessionToken: "" });
@@ -49,6 +43,8 @@ class Home extends React.Component<AcceptedProps>{
                     <Route exact path='/feed'><Feed token={this.props.token} /></Route>
                     <Route exact path='/profile'><Profile token={this.props.token} /></Route>
                 </Switch>
+
+                <Footer/>
             </div>
         )
     }

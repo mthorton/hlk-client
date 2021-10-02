@@ -4,6 +4,7 @@ import APIURL from '../../helpers/environment';
 import SynonymFetch from '../dictionary-api/SynonymFetch';
 import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
+import './Home.css';
 
 type AcceptedProps = {
     token: string,
@@ -77,17 +78,19 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
 
     render(){
         return(
-            <Container className='event-feed'>
-                {/* <Button onClick={this.onClick}>Feed</Button> */}
-                <SynonymFetch word={"dog"}/>
-                 <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
-                 <Row>
-                     <Col md='12'>
-                        <PostPrimaryDisplay events={this.state.events} editUpdateEvent={this.editUpdateEvent}
-                        updateOn={this.updateOn} fetchEvents={this.fetchEvents} token={this.props.token} eventToUpdate={this.state.eventToUpdate} updateOff={this.updateOff}/>
-                    </Col>
-                </Row>
-            </Container>
+            <div className="main-background">
+
+                <Container className='main-container'>
+                    {/* <SynonymFetch word={"dog"}/> */}
+                    <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
+                    <Row>
+                        <Col md='12'>
+                            <PostPrimaryDisplay events={this.state.events} editUpdateEvent={this.editUpdateEvent}
+                            updateOn={this.updateOn} fetchEvents={this.fetchEvents} token={this.props.token} eventToUpdate={this.state.eventToUpdate} updateOff={this.updateOff}/>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }

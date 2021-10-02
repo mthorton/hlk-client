@@ -1,20 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 
 .navbar-home{
-    margin-left: 15%;
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url('/src/assets/handwriting.png');
+    padding-left: 11em;
+    width: 100%;
+    position: fixed;
 }
 
 .nav-links ul{
-    margin-left: 3em;
+    margin-left: 4em;
 }
 
 ul#nav-horizontal li{
     display: inline;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
 
 }
 
 .nav-button {
-    margin-left: 8em;
+    margin-left: 7em;
     margin-right: 8em;
+    margin-top: 0.8em;
+    padding-left: 3em;
+    padding-right: 3em;
+
 }
+
+.nav-title h1{
+    color: white;
+    font-family: 'Cedarville Cursive', cursive;
+}
+

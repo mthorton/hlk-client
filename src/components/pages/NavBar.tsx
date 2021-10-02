@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
 import { BsFillHouseFill, BsCollectionFill, BsFillPersonFill } from "react-icons/bs"
+import { GiFishingHook } from 'react-icons/gi'
 import {
     Navbar,
     NavbarBrand,
@@ -51,11 +52,12 @@ class NavBar extends React.Component<AcceptedProps, SetValues>{
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml" navbar>
                     <NavbarBrand className='nav-title'><h1>Hook, Line, and Keeper</h1></NavbarBrand>
+                    <GiFishingHook size="3em" color="white"/>
                         <NavItem className='nav-links'>
                             <ul id="nav-horizontal">
-                                <li><Link to='/landing'><BsFillHouseFill/></Link></li>
-                                <li><Link to='/feed'><BsCollectionFill/></Link></li>
-                                <li><Link to='/profile'><BsFillPersonFill/></Link></li>
+                                <li><Link to='/landing'><BsFillHouseFill size="3em" color="white"/></Link></li>
+                                <li><Link to='/feed'><BsCollectionFill size="3em" color="white"/></Link></li>
+                                <li><Link to='/profile'><BsFillPersonFill size="3em" color="white"/></Link></li>
                             </ul>
                         </NavItem>
                         <NavItem>

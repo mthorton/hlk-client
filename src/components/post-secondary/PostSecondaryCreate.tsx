@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import APIURL from '../../helpers/environment';
+import SynonymFetch from '../dictionary-api/SynonymFetch';
 
 type AcceptedProps = {
     token: string,
     fetchEvents(): any, //(arg: string): void
-    event: any
+    event: any,
+    primaryPost: string,
 }
 
 type SetValues = {
@@ -19,7 +21,7 @@ type SetValues = {
 }
 
 class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
-    constructor(props: AcceptedProps){
+    constructor(props: AcceptedProps) {
         super(props)
         this.state = {
             date: "",
@@ -37,21 +39,21 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
         //fetch(`http://localhost:3000/postsecondary/create`, {  
         fetch(`${APIURL}/postsecondary/create`, {
             method: 'POST',
-            body: JSON.stringify({postsecondary: {date: this.state.date, post: this.state.post, thoughts: this.state.thoughts, postprimaryId: this.state.postprimaryId}}),
+            body: JSON.stringify({ postsecondary: { date: this.state.date, post: this.state.post, thoughts: this.state.thoughts, postprimaryId: this.state.postprimaryId } }),
             headers: new Headers({
-                'Content-Type' : 'application/json',
-                'Authorization' : `Bearer ${this.props.token}`
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.props.token}`
             })
         }).then((res) => res.json())
-        .then((logData) => {
-            this.setState({
-                date: '',
-                genre: '',
-                post: '',
-                thoughts: '',
+            .then((logData) => {
+                this.setState({
+                    date: '',
+                    genre: '',
+                    post: '',
+                    thoughts: '',
+                })
+                this.props.fetchEvents()
             })
-            this.props.fetchEvents()
-        })
     };
 
     onClick: any = () => this.handleSubmit
@@ -68,36 +70,55 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
         })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <>
 
                 <Button onClick={this.toggleOpen}>Create Secondary Post</Button>
-                <Modal isOpen={this.state.modal}>
+                <Modal isOpen={this.state.modal} className="secondary-create-modal">
+                    <div className="secondary-create-container">
+                        <div className="secondary-create-child">
+                            <ModalHeader><h4>Create Post</h4></ModalHeader>
+                            <ModalBody>
+                                <Form onSubmit={this.handleSubmit}>
+                                    <FormGroup>
+                                        <Label htmlFor="dateString">Date: </Label>
+                                        <Input name="dateString" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
+                                    </FormGroup>
+                                    <h4>Initial Post: {this.props.primaryPost}</h4>
+                                    <FormGroup>
+                                        <Label htmlFor="location">Post: </Label>
+                                        <Input name="location" value={this.state.post} onChange={(e) => this.setState({ post: e.target.value })} className="secondary-create-post" type="textarea" />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label htmlFor="description">Thoughts: </Label>
+                                        <Input name="description" value={this.state.thoughts} onChange={(e) => this.setState({ thoughts: e.target.value })} className="secondary-create-thoughts" type="textarea" />
+                                    </FormGroup>
+                                    <div className="secondary-create-button-container">
+                                        <div className="secondary-create-button-child">
+                                            <Button type="submit" onClick={this.toggleClose}>Add Event</Button>
+                                        </div>
+                                        <div className="secondary-create-button-child">
+                                            <Button onClick={this.toggleClose}>Cancel</Button>
+                                        </div>
+                                    </div>
+                                </Form>
+                            </ModalBody>
+                        </div>
+                        <div className="secondary-create-child">
+                            <ModalBody>
+                                <div>
+                                    <SynonymFetch />
+                                </div>
+                            </ModalBody>
+                        </div>
+                    </div>
 
-                    <ModalHeader>Edit Post</ModalHeader>
-                    <ModalBody>
-                        <Form onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Label htmlFor="dateString">Date: </Label>
-                                <Input name="dateString" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="location">Post: </Label>
-                                <Input name="location" value={this.state.post} onChange={(e) => this.setState({ post: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="description">Thoughts: </Label>
-                                <Input name="description" value={this.state.thoughts} onChange={(e) => this.setState({ thoughts: e.target.value})}/>
-                            </FormGroup>
-                            <Button type="submit" onClick={this.toggleClose}>Add Event</Button>
-                        </Form>  
-                    </ModalBody> 
                 </Modal>
             </>
         );
     }
-    
+
 };
 
 export default PostSecondaryCreate;
