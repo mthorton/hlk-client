@@ -1,38 +1,52 @@
-import React, { useState } from 'react'; //useEffect
 import './App.css';
 import {
   BrowserRouter as Router
 } from 'react-router-dom';
+import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Auth from './components/pages/Auth';
 import Home from './components/pages/Home';
 
-const App: React.FunctionComponent = () => {
-  const [sessionToken, setSessionToken] = useState('');
+type SetVariables = {
+  sessionToken: string
+}
 
-  const updateToken = (newToken: string) => {
+class App extends React.Component<{},SetVariables>{
+    state = {
+        sessionToken: ""
+    }
+
+  updateToken = (newToken: string) => {
     localStorage.setItem('token', newToken);
-    setSessionToken(newToken);
-    console.log(sessionToken);
+    this.setState({
+      sessionToken: newToken
+    })
   }
 
-  const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <Home token={sessionToken}/>
-    : <Auth updateToken={updateToken}/>) //updateToken={updateToken}
+  componentDidMount(){
+    this.protectedViews()
   }
 
-  return (
-    <div className="App">
-      <div>
-    
-        <Router>
-          {protectedViews()}
-        </Router>
-        
+  protectedViews = () => {
+    return (this.state.sessionToken === localStorage.getItem('token') ? <Home token={this.state.sessionToken}/>
+    : <Auth updateToken={this.updateToken}/>)
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <div>
+      
+          <Router>
+            {this.protectedViews()}
+          </Router>
+          
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  
 }
 
 export default App;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Table} from 'reactstrap'; 
+import { Container, Table, Row, Col } from 'reactstrap'; 
 import { Button } from 'reactstrap';
 import PostSecondaryCreate from '../post-secondary/PostSecondaryCreate';
 import PostSecondaryEdit from '../post-secondary/PostSecondaryEdit';
 import PostPrimaryEdit from './PostPrimaryEdit';
 import './PP.css';
+import { AiOutlineDelete } from 'react-icons/ai'
 
 type AcceptedProps = {
     token: string,
@@ -80,51 +81,60 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
             return(
                 <>
                     <hr/>
-                    <div key={index} className='feed-date-genre'>
-                        <h4>Date: {event.date}</h4>
-                        <h4>Genre: {event.genre}</h4>
-                    </div>
-                    <div>
-                        <h4>Post:</h4>{event.post}
-                        <h4>Thoughts:</h4>{event.thoughts}
-                    </div>
-                    <div>
-
-                        <PostPrimaryEdit eventToUpdate={event}
-                                updateOff={this.props.updateOff} token={this.props.token} fetchEvents={this.props.fetchEvents} />
-                        <Button onClick={() => { this.deleteEvent(event); } }>Delete</Button>
-                        <PostSecondaryCreate token={this.props.token} event={event} fetchEvents={this.props.fetchEvents} primaryPost={event.post}/>
-
-                    </div>
+                    <Container style={{backgroundColor: 'rgb(255,255,255,0.5)'}}>
+                        <Row>
+                            <Col key={index} xs="2">
+                                <h4>Date: {event.date}</h4>
+                                <h4>Genre: {event.genre}</h4>
+                            </Col>
+                            <Col xs="6">
+                                <h4>Post: </h4>{event.post}
+                            </Col>
+                            <Col xs="3">
+                                <h4>Thoughts: </h4>{event.thoughts}
+                            </Col>
+                         
+                            <Col xs="1" >
+                                <PostPrimaryEdit eventToUpdate={event}
+                                        updateOff={this.props.updateOff} token={this.props.token} fetchEvents={this.props.fetchEvents} />
+                           
+                                <Button color="danger" onClick={() => { this.deleteEvent(event); } }><AiOutlineDelete/></Button>
+                           
+                                <PostSecondaryCreate token={this.props.token} event={event} fetchEvents={this.props.fetchEvents} primaryPost={event.post}/>
+                            </Col>
+                                
+                        </Row>
+                    </Container>
                     <hr/>
 
-                    <tr>
+                    <Container>
                         
-                        <td className="secondary-event">{event.postsecondaries.map((secPost: any) => {
+                        <div className="secondary-event">{event.postsecondaries.map((secPost: any) => {
                             return(
-                                <>
-                                    <tr key={index}>
-                                        <td>{secPost.date}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{secPost.post}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{secPost.thoughts}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <PostSecondaryEdit token={this.props.token} event={secPost} updateOffSecondary={this.updateOffSecondary} fetchEvents={this.props.fetchEvents} />
+                                <Row style={{ width:"80%", paddingLeft:"25%", backgroundColor: 'rgb(255,255,255,0.5)' }}>
+                                    <Col key={index}>
+                                        <h6>Date: {secPost.date}</h6>
+                                    </Col>
+                                    <Col>
+                                        <h6>Post: {secPost.post}</h6>
+                                    </Col>
+                                    <Col>
+                                        <h6>Thoughts: {secPost.thoughts}</h6>
+                                    </Col>
+                                    <Col>
+                                        
+                                        <PostSecondaryEdit token={this.props.token} event={secPost} updateOffSecondary={this.updateOffSecondary} fetchEvents={this.props.fetchEvents} />
 
-                                            <Button onClick={() => { this.deleteSecondaryEvent(secPost); } }>Delete</Button>
-                                        </th>
-                                    </tr>
+                                        <Button color="danger" onClick={() => { this.deleteSecondaryEvent(secPost); } }><AiOutlineDelete/></Button>
+                                       
+                                    </Col>
 
-                                </>
+                                </Row>
+                                
                             )
-                        })}</td>
+                        })}</div>
                         
-                    </tr>
+                    </Container>
                     
                 </>
             )
@@ -137,8 +147,8 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
         return(
             <>
             {console.info(this.state.eventSecondaryToUpdate)}           
-            <h3 className='feed-header'>Posts</h3>
-            <hr/>
+            <h1 className='feed-header' style={{ float:"left", paddingTop:"1%" }}>Posts:</h1>
+            
             <Table >
                 
                 <div className='feed-display'>

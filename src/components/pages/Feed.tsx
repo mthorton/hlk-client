@@ -69,20 +69,13 @@ class Feed extends React.Component<AcceptedProps, VariableTypes, eventToUpdate>{
         this.fetchEvents()
     }
 
-    // testing(){
-    //     console.log(this.state.eventToUpdate)
-    //     console.log(this.state.events)
-    // }
-
-    // onClick: any = () => 
-
     render(){
         return(
             <div className="main-background">
-
                 <Container className='main-container'>
-                    {/* <SynonymFetch word={"dog"}/> */}
-                    <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
+                    <Row>
+                        <PostPrimaryCreate token={this.props.token} fetchEvents={this.fetchEvents}/>
+                    </Row>
                     <Row>
                         <Col md='12'>
                             <PostPrimaryDisplay events={this.state.events} editUpdateEvent={this.editUpdateEvent}

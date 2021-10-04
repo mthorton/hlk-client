@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import APIURL from '../../helpers/environment';
+import { AiOutlineEdit } from 'react-icons/ai'
 
 type AcceptedProps = {
     token: string,
@@ -70,7 +71,7 @@ class PostSecondaryEdit extends React.Component<AcceptedProps, SetValues>{
     render(){
         return(
             <div>
-                <Button onClick={this.toggleOpen} > Edit </Button>
+                <Button onClick={this.toggleOpen} ><AiOutlineEdit/></Button>
                 <Modal isOpen={this.state.modal}>
 
                     <ModalHeader>Edit Post</ModalHeader>

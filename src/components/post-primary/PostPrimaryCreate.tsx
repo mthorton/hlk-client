@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col } from 'reactstrap';
 import APIURL from '../../helpers/environment';
+import { AiFillPlusCircle } from 'react-icons/ai'
 
 type AcceptedProps = {
     token: string,
@@ -12,7 +13,8 @@ type SetValues = {
     genre: string,
     post: string,
     thoughts: string,
-    modal: boolean
+    modal: boolean,
+    genreDropdown: boolean,
 }
 
 class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
@@ -23,17 +25,10 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
             genre: "",
             post: "",
             thoughts: "",
-            modal: false
+            modal: false,
+            genreDropdown: false
         }
     }
-    // const [date, setDate] = useState('');
-    // const [title, setTitle] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [description, setDescription] = useState('');
-
-    // useEffect(() => {
-    //     handleSubmit();
-    // }, []);
 
     handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -62,6 +57,9 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
         })
     };
 
+    toggleGenreOn = () => this.setState({genreDropdown: true});
+    toggleGenreOff = () => this.setState({genreDropdown: false});
+
     onClick: any = () => this.handleSubmit
 
     toggleOpen = () => {
@@ -80,29 +78,64 @@ class PostPrimaryCreate extends React.Component<AcceptedProps, SetValues>{
         return(
             <>
 
-                <Button onClick={this.toggleOpen}>Create Post</Button>
-                <Modal isOpen={this.state.modal}>
+                <Button color="success" style={{ fontSize:"42px"}} onClick={this.toggleOpen}>Create a Post</Button>
+                <Modal isOpen={this.state.modal} className="primary-create-modal">
 
-                    <ModalHeader>Edit Post</ModalHeader>
+                    <ModalHeader><h1 className="pp-modal-title">Create a Post</h1></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup>
                                 <Label htmlFor="dateString">Date: </Label>
-                                <Input name="dateString" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value})}/>
+                                <Input name="dateString" type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value})}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="title">Genre: </Label>
-                                <Input name="title" value={this.state.genre} onChange={(e) => this.setState({ genre: e.target.value})}/>
+
+                                <FormGroup tag="fieldset">
+                                    <FormGroup check>
+                                    <Label check>
+                                        <Input type="radio" name="radio1" onChange={(e) => this.setState({ genre: "Action"})} />{' '}
+                                        Action
+                                    </Label>
+                                    </FormGroup>
+                                    <FormGroup check>
+                                    <Label check>
+                                        <Input type="radio" name="radio1" onChange={(e) => this.setState({ genre: "Fantasy"})} />{' '}
+                                        Fantasy
+                                    </Label>
+                                    </FormGroup>
+                                    <FormGroup check disabled>
+                                    <Label check>
+                                        <Input type="radio" name="radio1" onChange={(e) => this.setState({ genre: "Horror"})} />{' '}
+                                        Horror
+                                    </Label>
+                                    </FormGroup>
+                                    <FormGroup check disabled>
+                                    <Label check>
+                                        <Input type="radio" name="radio1" onChange={(e) => this.setState({ genre: "Romance"})} />{' '}
+                                        Romance
+                                    </Label>
+                                    </FormGroup>
+                                </FormGroup>
+
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="location">Post: </Label>
-                                <Input name="location" value={this.state.post} onChange={(e) => this.setState({ post: e.target.value})}/>
+                                <Input className="primary-create-post" name="location" type="textarea" value={this.state.post} onChange={(e) => this.setState({ post: e.target.value})}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="description">Thoughts: </Label>
-                                <Input name="description" value={this.state.thoughts} onChange={(e) => this.setState({ thoughts: e.target.value})}/>
+                                <Input name="description" type="textarea" value={this.state.thoughts} onChange={(e) => this.setState({ thoughts: e.target.value})}/>
                             </FormGroup>
-                            <Button type="submit" onClick={this.toggleClose}>Add Event</Button>
+                            <Row>
+                                <Col>
+                                    <Button type="submit" onClick={this.toggleClose}>Create</Button>
+                                </Col>
+                                <Col xs="9"/>
+                                <Col>
+                                    <Button onClick={this.toggleClose}>Cancel</Button>
+                                </Col>
+                            </Row>
                         </Form>  
                     </ModalBody> 
                 </Modal>

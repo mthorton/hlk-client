@@ -38,7 +38,8 @@ class Home extends React.Component<AcceptedProps>{
                 <NavBar clickLogout={this.clearToken}/>
             
                 <Switch>
-                    <Route exact path='/' component={() => (<Redirect to='/landing' />)} />
+                    <Route exact path='/login' component={() => (<Redirect to='/landing' />)} />
+                    <Route exact path='/signup' component={() => (<Redirect to='/landing' />)} />
                     <Route exact path='/landing'><Landing /></Route>
                     <Route exact path='/feed'><Feed token={this.props.token} /></Route>
                     <Route exact path='/profile'><Profile token={this.props.token} /></Route>

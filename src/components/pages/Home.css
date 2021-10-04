@@ -76,3 +76,45 @@ hr{
     padding: 20px;
     text-align: center;
 }  
+
+.feed-post-child{
+    width: 20%;
+    float: left;
+    padding: 5em;
+}
+
+.feed-middle-child{
+    width: 60%;
+}
+
+.feed-post-buttons{
+    width: 33%;
+    display: inline;
+    float: right;
+}
+
+.feed-header{
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 100px;
+}
+
+.create-a-post-button{
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.pp-modal-title{
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.ps-modal-title{
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.primary-create-modal{
+    width: 70%;
+    max-width: none!important; 
+}
+
+.primary-create-post{
+    height: 10em;
+}

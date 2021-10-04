@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import APIURL from '../../helpers/environment';
 import SynonymFetch from '../dictionary-api/SynonymFetch';
+import { AiFillPlusCircle } from 'react-icons/ai'
 
 type AcceptedProps = {
     token: string,
@@ -17,7 +18,7 @@ type SetValues = {
     thoughts: string,
     modal: boolean,
     secondaryEvents: Array<any>,
-    postprimaryId: number
+    postprimaryId: number,
 }
 
 class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
@@ -30,7 +31,7 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
             thoughts: "",
             modal: false,
             secondaryEvents: [],
-            postprimaryId: this.props.event.id
+            postprimaryId: this.props.event.id,
         }
     }
 
@@ -74,16 +75,17 @@ class PostSecondaryCreate extends React.Component<AcceptedProps, SetValues>{
         return (
             <>
 
-                <Button onClick={this.toggleOpen}>Create Secondary Post</Button>
+                <Button color="success" onClick={this.toggleOpen}><AiFillPlusCircle/></Button>
+
                 <Modal isOpen={this.state.modal} className="secondary-create-modal">
                     <div className="secondary-create-container">
                         <div className="secondary-create-child">
-                            <ModalHeader><h4>Create Post</h4></ModalHeader>
-                            <ModalBody>
+                            <ModalHeader className="ps-modal-title"><h1>Create a Post</h1></ModalHeader>
+                            <ModalBody >
                                 <Form onSubmit={this.handleSubmit}>
                                     <FormGroup>
                                         <Label htmlFor="dateString">Date: </Label>
-                                        <Input name="dateString" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
+                                        <Input name="dateString" type="date" value={this.state.date} onChange={(e) => this.setState({ date: e.target.value })} />
                                     </FormGroup>
                                     <h4>Initial Post: {this.props.primaryPost}</h4>
                                     <FormGroup>
