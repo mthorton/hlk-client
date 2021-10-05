@@ -3,7 +3,6 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import AuthLogin from './AuthLogin';
 import AuthSignUp from './AuthSignUp';
 import AuthButton from './AuthButton';
-import { Container } from 'reactstrap';
 import './Auth.css';
 
 type AcceptedProps = {

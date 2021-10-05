@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Label, Input } from 'reactstrap';
 
 const DicURL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
 

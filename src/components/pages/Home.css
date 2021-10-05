@@ -18,8 +18,16 @@
     font-size: 100px;
 }
 
-.landing-middle{
+.landing-our-goal{
     padding-top: 10em;
+    text-align: left;
+    padding-left: 15em;
+}
+
+.landing-our-goal h2{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 60px;
 }
 
 .footer{
@@ -117,4 +125,14 @@ hr{
 
 .primary-create-post{
     height: 10em;
+}
+
+.profile-main-title{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.profile-title{
+    float: left;
 }

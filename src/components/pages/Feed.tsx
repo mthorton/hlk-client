@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import APIURL from '../../helpers/environment';
-import SynonymFetch from '../dictionary-api/SynonymFetch';
 import PostPrimaryCreate from '../post-primary/PostPrimaryCreate';
 import PostPrimaryDisplay from '../post-primary/PostPrimaryDisplay';
 import './Home.css';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import './Home.css';
 
 type AcceptedProps = {
@@ -19,11 +19,29 @@ class Profile extends React.Component<AcceptedProps>{
             <div className="main-background">
 
                 <Container className="main-container">
-                    <Row>
-                        <h1>Profile</h1>
+                    <Row className="profile-container">
+                        <Col className="profile-title">
+                            <h1 className="profile-main-title">Profile</h1>
+                        </Col>
+                        <Col xs="10"/>
                     </Row>
                     <Row>
-                        
+                        <Col>
+                            <h3>Email:</h3>
+                        </Col>
+                        <Col xs="7"/>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h3>Posts:</h3>
+                        </Col>
+                        <Col xs="7"/>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h3>Sub-Posts:</h3>
+                        </Col>
+                        <Col xs="7"/>
                     </Row>
                 </Container>
             

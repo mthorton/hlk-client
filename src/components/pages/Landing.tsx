@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import './Home.css';
 
 type AcceptedProps = {
@@ -21,8 +21,11 @@ class Landing extends React.Component{
                     <Row className="landing-top">
                         <h1>Hook, Line, and Keeper</h1>
                     </Row>
-                    <Row className="landing-middle">
-                        <h4>Do you write compelling stories?</h4>
+                    <Row className="landing-our-goal">
+                        <h2>Our goal...</h2>
+                    </Row>
+                    <Row className="landing-our-goal-text">
+                        <h2>We want to help amateur writers grab their audience's attention so they can tell their tales. </h2>
                     </Row>
                 </Container>
             </div>

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import APIURL from '../../helpers/environment';
-import { AiFillPlusCircle } from 'react-icons/ai'
 
 type AcceptedProps = {
     token: string,
