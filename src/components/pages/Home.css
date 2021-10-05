@@ -136,3 +136,67 @@ hr{
 .profile-title{
     float: left;
 }
+
+.landing-our-goal-text{
+    width: 60%;
+    text-align: left;
+    margin-left: 35%;
+    text-indent: 10%;
+}
+
+.how-it-works{
+    padding-top: 10em;
+    text-align: left;
+    padding-left: 15em;
+}
+
+.how-it-works h2{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.how-it-works-text{
+    width: 60%;
+    text-align: left;
+    margin-left: 35%;
+    text-indent: 10%;
+}
+
+.how-to-help{
+    padding-top: 10em;
+    text-align: left;
+    padding-left: 15em;
+}
+
+.how-to-help h2{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.how-to-help-text{
+    width: 60%;
+    text-align: left;
+    margin-left: 35%;
+    text-indent: 10%;
+}
+
+.what-next{
+    padding-top: 10em;
+    text-align: left;
+    padding-left: 15em;
+}
+
+.what-next h2{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.what-next-text{
+    width: 60%;
+    text-align: left;
+    margin-left: 35%;
+    text-indent: 10%;
+}

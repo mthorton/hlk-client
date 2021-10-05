@@ -22,10 +22,28 @@ class Landing extends React.Component{
                         <h1>Hook, Line, and Keeper</h1>
                     </Row>
                     <Row className="landing-our-goal">
-                        <h2>Our goal...</h2>
+                        <h2>The goal...</h2>
                     </Row>
                     <Row className="landing-our-goal-text">
-                        <h2>We want to help amateur writers grab their audience's attention so they can tell their tales. </h2>
+                        <h2>To help amateur writers grab the attention of their audiences by helping to develop their opening hook.</h2>
+                    </Row>
+                    <Row className="how-it-works">
+                        <h2>How it works...</h2>
+                    </Row>
+                    <Row className="how-it-works-text">
+                        <h2>Create a post with the current hook you're working on wait for a community of writers to help you workshop your idea.</h2>
+                    </Row>
+                    <Row className="how-to-help">
+                        <h2>How to help...</h2>
+                    </Row>
+                    <Row className="how-to-help-text">
+                        <h2>Go to the feed page and click on the green plus on any post to help the original poster workshop their hook.</h2>
+                    </Row>
+                    <Row className="what-next">
+                        <h2>What's next...</h2>
+                    </Row>
+                    <Row className="what-next-text">
+                        <h2>Head to the feed page are start developing the hook for your next great story!</h2>
                     </Row>
                 </Container>
             </div>
