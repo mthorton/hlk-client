@@ -6,6 +6,7 @@ import PostSecondaryEdit from '../post-secondary/PostSecondaryEdit';
 import PostPrimaryEdit from './PostPrimaryEdit';
 import './PP.css';
 import { AiOutlineDelete } from 'react-icons/ai'
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     token: string,
@@ -53,7 +54,8 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
 
     deleteEvent = (event: { id: any; }) => {
         console.log('delete endpoint')
-        fetch(`http://localhost:3000/postprimary/delete/${event.id}`, {  
+        fetch(`${APIURL}/postprimary/delete/${event.id}`, {
+        //fetch(`http://localhost:3000/postprimary/delete/${event.id}`, {  
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -64,8 +66,9 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     }
 
     deleteSecondaryEvent = (event: { id: any; }) => {
-        console.log('delete endpoint')
-        fetch(`http://localhost:3000/postsecondary/delete/${event.id}`, {  
+        console.log('delete secondary endpoint')
+        fetch(`${APIURL}/postsecondary/delete/${event.id}`, {
+        //fetch(`http://localhost:3000/postsecondary/delete/${event.id}`, {  
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
