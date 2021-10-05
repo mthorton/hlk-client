@@ -1,3 +1,43 @@
+
+# Project Title
+
+Hook, Line, and Keeper
+
+# Author
+
+Maxwell Horton
+
+# Project Description
+
+Hook, Line, and Keeper is a forum based app that helps amateur writers develop a powerful and gripping hook for the beginning of a story or a chapter. 
+
+# Tech
+
+I used tsx to create an app using class based components. The "final" (I'm still going to take this project further) project is published on Heroku.
+
+# Install 
+
+If you pull this project from github run "npm install" or "npm i" to install the necessary libraries.
+
+# Structure
+
+The folder structure for this project is broken up mainly into "pages", "auth", "post-primary", and "post-secondary". The files in "pages" are what call the functionality of the page. While some calls or functionality may exist on these pages, a majority of the functionality exists in "auth", "post-primary", and "post-secondary". There is also "dictionary-api" which utilizes the dictionary api I used for this project. 
+
+Though I didn't use many images in this project, the ones I did use are stored in the "assets" dir. 
+
+# Credits
+
+Thank you to the Eleven Fifty Academy and all of my classmates. 
+
+
+
+
+
+
+
+
+
+# VVVVVVVVVVV---REACT README BELOW---VVVVVVVVVVVVVVVV
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

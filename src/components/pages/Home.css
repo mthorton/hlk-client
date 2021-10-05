@@ -200,3 +200,21 @@ hr{
     margin-left: 35%;
     text-indent: 10%;
 }
+
+.pp-edit-modal{
+    width: 80%;
+    max-width: none!important; 
+}
+
+.pp-edit-post{
+    height: 10em;
+}
+
+.sp-edit-modal{
+    width: 80%;
+    max-width: none!important; 
+}
+
+.sp-edit-post{
+    height: 10em;
+}

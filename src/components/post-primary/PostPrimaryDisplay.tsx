@@ -76,7 +76,7 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
     }
 
     eventMapper = () => {
-        console.info('mappping')
+        //console.info('mappping')
         return this.props.events.map((event, index) => {
             return(
                 <>
@@ -88,7 +88,7 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
                                 <h4>Genre: {event.genre}</h4>
                             </Col>
                             <Col xs="6">
-                                <h4>Post: </h4>{event.post}
+                                <h4>Post: </h4><p style={{ textAlign:"left", textIndent:"10%"}}>{event.post}</p>
                             </Col>
                             <Col xs="3">
                                 <h4>Thoughts: </h4>{event.thoughts}
@@ -111,15 +111,15 @@ class EventFeedTable extends React.Component<AcceptedProps, SetVariables>{
                         
                         <div className="secondary-event">{event.postsecondaries.map((secPost: any) => {
                             return(
-                                <Row style={{ width:"80%", paddingLeft:"25%", backgroundColor: 'rgb(255,255,255,0.5)' }}>
+                                <Row style={{ width:"100%", paddingLeft:"25%", backgroundColor: 'rgb(255,255,255,0.5)' }}>
                                     <Col key={index}>
                                         <h6>Date: {secPost.date}</h6>
                                     </Col>
-                                    <Col>
-                                        <h6>Post: {secPost.post}</h6>
+                                    <Col xs="6">
+                                        <h6>Post: </h6><p style={{ textAlign:"left", textIndent:"10%"}}>{secPost.post}</p>
                                     </Col>
-                                    <Col>
-                                        <h6>Thoughts: {secPost.thoughts}</h6>
+                                    <Col xs="3">
+                                        <h6>Thoughts: </h6>{secPost.thoughts}
                                     </Col>
                                     <Col>
                                         

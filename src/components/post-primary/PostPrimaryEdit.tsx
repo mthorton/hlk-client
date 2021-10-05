@@ -73,7 +73,7 @@ class PostPrimaryEdit extends React.Component<AcceptedProps, SetValues>{
         return(
             <div>
                 <Button onClick={this.toggleOpen} ><AiOutlineEdit/></Button>
-                <Modal isOpen={this.state.modal}>
+                <Modal isOpen={this.state.modal} className="pp-edit-modal">
 
                     <ModalHeader>Edit Post</ModalHeader>
                     <ModalBody>
@@ -88,13 +88,14 @@ class PostPrimaryEdit extends React.Component<AcceptedProps, SetValues>{
                         </FormGroup>
                         <FormGroup>
                             <Label htmlFor="post">Edit Post: </Label>
-                            <Input name="post" value={this.state.editPost} onChange={(e) => this.setState({ editPost: e.target.value})}/>
+                            <Input name="post" className="pp-edit-post" type="textarea" value={this.state.editPost} onChange={(e) => this.setState({ editPost: e.target.value})}/>
                         </FormGroup>
                         <FormGroup>
                             <Label htmlFor="thoughts">Edit Thoughts: </Label>
-                            <Input name="thoughts" value={this.state.editThoughts} onChange={(e) => this.setState({ editThoughts: e.target.value})}/>
+                            <Input name="thoughts" className="pp-edit-thoughts" type="textarea" value={this.state.editThoughts} onChange={(e) => this.setState({ editThoughts: e.target.value})}/>
                         </FormGroup> 
                         <Button type="submit" onClick={this.toggleClose}>Update the Event!</Button>  
+                        <Button onClick={this.toggleClose}>Cancel</Button>
                         </Form>    
                     </ModalBody> 
                 </Modal>
